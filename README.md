@@ -2,13 +2,15 @@
 
 ## Get Started
 
+### If you are using virtual environment, Python version is `Python 3.10.18`
+
 ### Create a New Virtual Environment:
 
 1. With venv:
 
    ```bash
    # create environment
-   python3.9 -m venv venv  #or other name you like
+   python3.10 -m venv venv  #or other name you like
 
    # activate environment
    source venv/bin/activate    # macOS/Linux
@@ -40,7 +42,7 @@
   pip freeze > requirements.txt
   ```
 
-### Start the programe
+### Start the program
 
 ```bash
 python3 scraper.py
@@ -59,7 +61,7 @@ person.scrape(close_on_complete=False)
 ```
 
 - when you run `person.scrape()`, it'll scrape and close the browser.
-- `close_on_complete=False` make it do not close the browser
+- `close_on_complete=False` makes it not close the browser
 
 ## URL
 
