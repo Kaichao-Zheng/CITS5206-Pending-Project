@@ -1,14 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
 from gov_scraper_person import Person
-import time
 
-# Function to parse the organisations from the response
+# Parse the organisations from the response
 def parseOrganisations(response, element, elementClass):
     soup = BeautifulSoup(response.content, "html.parser")
     return soup.find_all(element, class_=elementClass)
 
-# Function to fetch the page and print the status
+# Fetch the page and print the status
 def getPage(baseURL):
     response = requests.get(baseURL)
     if response.status_code == 200:
@@ -17,7 +16,7 @@ def getPage(baseURL):
         print(f"Failed to fetch the page. Status code: {response.status_code}")
         exit()
 
-#
+# Find the people associated with an organisation
 def parsePeople(organisation, personElement):
     person_obj = Person()
 
@@ -52,7 +51,8 @@ def parseKeyPeople(element):
     people = element.find_all("li", class_="list-group-item")
     for person in people:
         return parsePeople(organisation, person)
-    
+
+# Recursively find subsectors and parse their key people
 def findSubsectors(element, sector_name):
     subsectors = element.find_all("li")
     for subsector in subsectors:
@@ -76,9 +76,9 @@ baseURL = 'https://www.directory.gov.au'
 page = getPage(baseURL + '/commonwealth-entities-and-companies')
 results = parseOrganisations(page, "td", "views-field views-field-title")
 
-#M Main loop to iterate through each organisation
+# Main loop to iterate through each organisation
 for result in results:
-    a_tag = result.find("a")  # Find the <a> tag within the <td>
+    a_tag = result.find("a")
     if a_tag:
         organisation = result.text.strip()
         href = a_tag["href"]  # Extract the href attribute
