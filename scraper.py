@@ -104,6 +104,8 @@ for name in name_list:
                 if person.experiences:
                     position_title = person.experiences[0].position_title or ""
 
+                
+
                 print("Name:", name)
                 print("Company:", company)
                 print("Position:", position_title)
