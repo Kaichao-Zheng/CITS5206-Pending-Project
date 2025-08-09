@@ -3,6 +3,12 @@
 
 # Ignore bulk local virtual environment files
 venv/
+.venv/
+.env
 
 # Ignore the backup files of .drawio
 *.bkp
+
+# for testing purposes
+test-*.py
+*.xlsx
