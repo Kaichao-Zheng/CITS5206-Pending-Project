@@ -24,6 +24,7 @@
 - [Flask](https://flask.palletsprojects.com/en/stable/)
 - [Tailwind](https://tailwindcss.com/docs/installation/using-vite)
 - [Linkedin_scraper](https://github.com/joeyism/linkedin_scraper)
+- [Webdriver_manager](https://github.com/SergeyPirogov/webdriver_manager)
 
 ## Get Started
 
@@ -35,11 +36,11 @@
 
    ```bash
    # create environment
-   python3.10 -m venv .venv  #or other name you like
+   python3.10 -m venv .venv	 # or other name you preferred
 
    # activate environment
    source .venv/bin/activate    # macOS/Linux
-   .\.venv\Scripts\activate     # Windows
+   .\.venv\Scripts\activate     # Windows PowerShell
    ```
 
 2. Or with conda:
@@ -47,23 +48,30 @@
    ```bash
    # create environment
    conda create -n yourEnvName python=3.9.18
-
+   
    # activate environment
    conda activate yourEnvName
    ```
 
 ### Manage Dependencies:
 
-- Install dependency:
+- Install dependencies:
   ```bash
   pip install -r requirements.txt
   ```
-- Add new dependency:
+
+- Add a new dependency:
 
   ```bash
   pip install <package-name>
-
+  
   # commit in requirements.txt
+  pip freeze > requirements.txt
+  ```
+
+- Update dependencies list
+
+  ```bash
   pip freeze > requirements.txt
   ```
 
