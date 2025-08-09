@@ -2,6 +2,7 @@ class Person:
     def __init__(self):
         self.name = None
         self.organisation = None
+        self.department = None
         self.position = None
         self.phone = None
         self.email = None
@@ -15,6 +16,9 @@ class Person:
 
     def addOrganisation(self, organisation):
         self.organisation = organisation
+
+    def addDepartment(self, department):
+        self.department = department
 
     def addPosition(self, position):
         self.position = position

@@ -63,15 +63,14 @@ def findSubsectors(element, sector_name):
         else:
             a_tag = subsector.find("a")
             if a_tag:
-                subsector_name = sector_name + ' - ' + subsector.text.strip()
                 subsector_href = a_tag["href"]
                 subsector_page = getPage(baseURL + subsector_href)
                 subsector_results = parseOrganisations(subsector_page, "section", ["views-element-container", "block-directory-custom"])
                 for subsector_result in subsector_results:
                     if findText(subsector_result, "Key People"):
                         person_obj = parseKeyPeople(subsector_result)
-                        person_obj.organisation = person_obj.organisation + subsector_name
-                        print(f"Name: {person_obj.name}, Organisation: {person_obj.organisation}, Position: {person_obj.position}, Phone: {person_obj.phone}, Email: {person_obj.email}")
+                        person_obj.department = subsector.text.strip()
+                        print(f"Name: {person_obj.name}, Organisation: {person_obj.organisation}, Department: {person_obj.department}, Position: {person_obj.position}, Phone: {person_obj.phone}, Email: {person_obj.email}")
 
 baseURL = 'https://www.directory.gov.au'
 page = getPage(baseURL + '/commonwealth-entities-and-companies')
@@ -91,7 +90,7 @@ for result in results:
             # ===========
             if findText(organisation_result, "Key People"):
                 person_obj = parseKeyPeople(organisation_result)
-                print(f"Name: {person_obj.name}, Organisation: {person_obj.organisation}, Position: {person_obj.position}, Phone: {person_obj.phone}, Email: {person_obj.email}")
+                print(f"Name: {person_obj.name}, Organisation: {person_obj.organisation}, Department: {person_obj.department}, Position: {person_obj.position}, Phone: {person_obj.phone}, Email: {person_obj.email}")
 
             # ===========
             # Checks for sub-sectors within the organisation
